@@ -1,3 +1,22 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+ # Adding Backend as S3 for Remote State Storage
+  backend "s3" {
+    bucket = "vgsterraform"
+    key    = "vgs/terraform.tfstate"
+    region = "ap-south-1"   
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
 locals {
   region = "us-east-1"
   name   = "amonkincloud-cluster"
@@ -11,6 +30,4 @@ locals {
   }
 }
 
-provider "aws" {
-  region = "us-east-1"
-}
+
