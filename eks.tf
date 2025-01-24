@@ -30,12 +30,12 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    amc-cluster-wg = {
+    vgs_cluster_wg = {
       min_size     = 1
       max_size     = 2
       desired_size = 1
 
-      instance_types = ["t3.large"]
+      instance_types = ["t2.medium"]
       capacity_type  = "SPOT"
 
       tags = {
